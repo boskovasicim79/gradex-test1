@@ -249,7 +249,7 @@ header .contact p a {
 .services-container {
     max-width: 1200px; /* Maksimalna širina sadržaja */
     margin: 0 auto; /* Centriranje kontejnera */
-    padding: 0 20px; /* Mali horizontalni padding unutar kontejnera */
+    padding: 0 0px; /* Mali horizontalni padding unutar kontejnera */
 }
 
 /* Header deo sekcije (žuta linija + naslov) */
@@ -258,6 +258,7 @@ header .contact p a {
     margin-bottom: 50px; /* Razmak ispod naslova i linije */
     margin-left: 40px;
 }
+
 
 /* Žuta linija iznad naslova */
 .services-section .section-underline {
@@ -545,11 +546,11 @@ header .contact p a {
 }
 
 .services-bager .section-header p{
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .services-bager .section-header .btnr{
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 .section-no-desk{
@@ -971,7 +972,9 @@ header .contact p a {
 
     .services-section .section-header {
     margin-bottom: 0px; 
-    margin-left: 0px
+    margin-left: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
     }
 
     /*.services-section .section-title {
@@ -1024,11 +1027,11 @@ header .contact p a {
 
     .section-no-desk{
         display: block;
+        padding-right: -20px;
     }
 
     .section-no-desk img{
-        max-width: 700px;
-        max-height: 700px;
+        max-width: 100%;
     }
 
 
@@ -1215,6 +1218,32 @@ header .contact p a {
     padding-bottom: 0px;
     }
 
+    .services-section .first-service-header::before {
+        content: "";
+    display: block;
+    background-color: #f0b90b;
+    margin: 15px auto 0;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 6.5px;
+    }
+
+    .services-section .section-underline {
+        display: none;
+    }
+
+    .services-section .section-underline-2{
+        width: 90px;
+        height: 6.5px;
+        background-color: #f0b90b;
+        margin-bottom: 15px;
+        margin-left: 0;
+    }
+
+    .first-service-header{
+    text-align: center;
+    }
+
     .services-bager {
         margin-top: 0px;
     }
@@ -1265,11 +1294,6 @@ header .contact p a {
 
     .service-items {
     gap: 0px;
-    }
-
-    .section-no-desk img {
-        max-width: 500px;
-        max-height: 500px;
     }
 
  .services-bager .section-header .section-title {
