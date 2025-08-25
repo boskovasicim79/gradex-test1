@@ -1,0 +1,1333 @@
+/*Theme Name: GRADEX D.O.O.
+  Author: Popravi.net
+  Description: Izgradnja modernih poslovno stambenih zgrada
+  Version: 1.0
+  Tags: GRADEX DOO, IZGRADNJA, gradnja, izgradnja poslovno stambenih zgrada, projektovanje, prodaja stanova, visokogradnja, niskogradnja, hidrogradnja, izgradnja kluč u ruke, grubi građevinski radovi, pripremni radovi, elektroinstalacioni radovi, vodovod i kanalizacija
+*/
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+body {
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: transparent transparent; /* Firefox */
+  }
+
+  body.no-scroll {
+    overflow: hidden;
+}
+
+
+/*SECTION 1*/
+
+/* MAIN HERO AREA (nova glavna sekcija) */
+.main-hero-area {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Postavljamo da bude visoka barem koliko ceo viewport */
+    background-image: url('img/Gradex-zvornik.jpg'); /* VAŠA SLIKA GRADIŠTA */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column; /* Omogućava sadržaju unutar da se složi vertikalno */
+    justify-content: flex-start; /* Poravnavamo sadržaj sa vrha */
+    align-items: center; /* Centriramo sadržaj horizontalno (za header i hero content) */
+    color: white;
+}
+
+/* Overlay za zatamnjenje pozadinske slike */
+.main-hero-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1  ; /* Ispod sadržaja */
+}
+
+/* Header (navigacija) */
+header {
+    display: flex;
+    justify-content: space-between; /* Razmak između menija i kontakta */
+    align-items: center;
+    width: 100%;
+    padding-left: 20px; 
+    /*padding-right: 50px;*/
+    position: relative; /* Bitno za z-index */
+    z-index:  1; /* Iznad overlay-a */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Jači gradijent na vrhu */
+    /* Nema backgrounda ovde, jer ga main-hero-area već ima */
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+header ul li {
+    padding: 0 15px;
+}
+
+header ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0; /* Dodato padding za bolji izgled underline-a */
+}
+
+/* Underline efekat za navigaciju */
+header ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #f0b90b;
+    transition: width 0.7s ease;
+}
+
+header ul li a:hover::before {
+    width: 100%;
+}
+
+/* Posebno za "Naslovna" jer ima već liniju */
+header ul li:first-child a.z_linija {
+    border-bottom: 3px solid #f0b90b;
+}
+header ul li:first-child a.z_linija:hover::before {
+    width: 0; /* Ne prikazuj underline na hover ako već ima liniju */
+}
+
+
+header a .logo {
+    max-width: 200px;
+    margin-right: 60px; /* Razmak između loga i navigacije */
+}
+
+.meni_lijevo {
+    display: flex;
+    align-items: center;
+}
+
+header .contact {
+    position: absolute;
+    right:-5px ;
+    top: -3px;
+    display: flex; /* Koristimo flexbox za poravnanje */
+    align-items: center; /* Vertikalno centriranje sadržaja */
+    justify-content: center; /* Horizontalno centriranje sadržaja */
+
+
+    background-image: url('img/pozadina-za-telefon.png'); /* Postavljamo narandžastu sliku kao pozadinu */
+    background-size: 100% 100%; /* Sliku razvlačimo da popuni ceo element i zadrži oblik */
+    background-position: center; /* Centriramo je */
+    background-repeat: no-repeat; /* Ne ponavljamo je */
+
+    padding: 30px 45px; /* Dodajte padding da se tekst ne lepi za ivice. Prilagodite ove vrednosti! */
+    /* Uklanjamo border i border-radius jer je to deo pozadinske slike */
+    /* border: none; */
+    /* border-radius: 0; */
+
+    color: white; /* Boja teksta i ikone je bela */
+    z-index: 2; /* Osigurajte da je iznad overlay-a main-hero-area */
+    height: 48px; /* Fiksna visina, prilagodite da se slika lepo prikaže. Možda će biti potrebno eksperimentisati. */
+    box-sizing: border-box; /* Padding se uračunava u širinu/visinu */
+    min-width: 210px; /* Minimalna širina da broj telefona stane. Prilagodite! */
+}
+
+header .contact i.fa-solid.fa-phone {
+    margin-right: 8px; /* Razmak između ikone i teksta */
+    font-size: 1.1em; /* Prilagodite veličinu ikone po potrebi */
+}
+
+header .contact p a {
+    text-decoration: none;
+    color: white; /* Boja linka */
+    font-weight: 600; /* Podebljan font kao na slici */
+    white-space: nowrap; /* Sprečava prelamanje broja telefona */
+}
+
+/* Hero Content Wrapper - sadrži tekst "Vjerujemo" i dugme */
+.hero-content-wrapper {
+    flex-grow: 1; /* Omogućava da zauzme sav dostupan prostor između headera i dna main-hero-area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centriramo sadržaj vertikalno */
+    align-items: flex-start; /* Poravnavamo tekst levo (kao na slici) */
+    width: 100%;
+    max-width: 1200px; /* Ograničenje širine za sadržaj */
+    position: relative; /* Bitno za z-index */
+    z-index: 2; /* Iznad overlay-a */
+}
+
+.home-content h1 {
+    font-size: 6.5em;
+    font-weight: 900 !important ;
+    letter-spacing: 1px;
+    margin-bottom: -10px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase; /* Tekst je uppercase na slici */
+    line-height: 0.9;
+    margin-bottom: 20px;
+}
+
+  .home-content h1 span{
+        color: #f0b90b;
+    }
+
+
+
+.home-content p {
+    font-size: 1.4em; /* Malo veći font za slogan */
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.btnr {
+  background-image: url('img/Rectange.png'); /* Postavljamo narandžastu sliku kao pozadinu */
+  background-size: 100% 100%; /* Sliku razvlačimo da popuni ceo element i zadrži oblik */
+  background-position: center; /* Centriramo je */
+  background-repeat: no-repeat; /* Ne ponavljamo je */
+  color: #333; /* Tamniji tekst */
+  padding: 25px 0; /* Padding po vertikali ostavljamo, ali horizontalni padding postavljamo na 0 jer ćemo koristiti fiksnu širinu */
+  margin-left: -10px;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 900 !important;
+  letter-spacing: 1px;
+  font-weight: bold; /* Ovo je redundantno ako je font-weight: 900 !important; */
+  text-transform: uppercase;
+  display: inline-block; /* Da bi padding radio kako treba */
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 340px; /* Eksperimentirajte s ovom vrijednošću dok ne dobijete željenu širinu koja odgovara "Trenutni projekti" */
+  text-align: center; /* Centrirajte tekst unutar dugmeta */
+}
+
+.btnr:hover {
+    color: white; /* Malo tamnija žuta pri prelasku mišem */
+}
+
+
+
+/* NAŠE USLUGE sekcija - Glavni kontejner */
+
+
+.services-section {
+    padding-top: 40px; 
+    padding-bottom: 30px;
+    background-color: white; /* Svetlija pozadina, kao na slici */
+    text-align: center; /* Centrirajte kartice, naslov će biti posebno poravnat */
+}
+
+/* Kontejner za sadržaj unutar sekcije (zbog margine sa strane) */
+.services-container {
+    max-width: 1200px; /* Maksimalna širina sadržaja */
+    margin: 0 auto; /* Centriranje kontejnera */
+    padding: 0 20px; /* Mali horizontalni padding unutar kontejnera */
+}
+
+/* Header deo sekcije (žuta linija + naslov) */
+.services-section .section-header {
+    text-align: left; /* Poravnavanje na levo */
+    margin-bottom: 50px; /* Razmak ispod naslova i linije */
+    margin-left: 40px;
+}
+
+/* Žuta linija iznad naslova */
+.services-section .section-underline {
+    width: 100px; /* Širina linije */
+    height: 7px; /* Debljina linije */
+    background-color: #f0b90b; /* Žuta boja */
+    margin-bottom: 15px; /* Razmak između linije i naslova */
+    margin-left: 0; /* Poravnaj levo */
+}
+
+/* Naslov "NAŠE USLUGE" */
+.services-section .section-title {
+    font-size: 2.6em; /* Veći font za naslov */
+    color: #333; /* Tamnija boja teksta */
+    margin-top: 0; /* Ukloni gornju marginu */
+    margin-bottom: 0; /* Ukloni donju marginu */
+    text-transform: uppercase; /* Velika slova */
+    font-weight: 800; /* Ekstra boldiran font, kao na slici */
+    letter-spacing: 0.7px;
+    line-height: 1.1;
+}
+
+/* Kontejner za tri usluge */
+.service-items {
+    display: flex;
+    justify-content: space-around; /* Ravnomerno rasporedi elemente */
+    flex-wrap: wrap; /* Omogući prelamanje na manjim ekranima */
+    gap: 30px; /* Razmak između kartica */
+}
+
+/* Pojedinačna uslužna kartica */
+.service-item {
+    flex: 1; /* Omogućava da zauzmu jednak prostor */
+    min-width: 280px; /* Minimalna širina kartice */
+    max-width: 350px; /* Maksimalna širina kartice */
+    background-color: transparent; /* Bez pozadinske boje, kao na slici */
+    padding: 20px; /* Padding unutar kartice */
+    text-align: center; /* Centrirajte sav sadržaj unutar kartice */
+}
+
+/* Kontejner za šestougaonu pozadinu ikonice */
+.service-item .icon-background {
+    width: 120px; /* Širina kontejnera za ikonicu */
+    height: 120px; /* Visina kontejnera za ikonicu */
+    margin: 0 auto 7px auto; /* Centriraj ga i dodaj razmak ispod */
+    display: flex; /* Koristi flexbox za centriranje ikonice unutra */
+    align-items: center; /* Vertikalno centriranje */
+    justify-content: center; /* Horizontalno centriranje */
+    
+    background-image: url('img/nase_usluge_Gradex.png'); /* VAŠA SLIKA ŠESTOUGAONOG OBLIKA */
+    background-size: contain; /* Sliku smesti unutar kontejnera */
+    background-position: center; /* Centriraj sliku */
+    background-repeat: no-repeat; /* Ne ponavljaj sliku */
+}
+
+/* Sama ikonica unutar šestougaonog oblika */
+.service-item .service-icon {
+    max-width: 100%; /* Prilagodite veličinu ikonice unutar šestougla */
+    height: auto;
+    display: block; /* Ukloni dodatni prostor ispod slike */
+    font-size: 35px;
+    color: white;
+}
+
+/* Naslov usluge (npr. "Izgradnja 'Ključ u ruke'") */
+.service-item h3 {
+    font-size: 1.1em; /* Veličina fonta */
+    color: #333; /* Tamnija boja teksta */
+    margin-bottom: 10px; /* Razmak ispod naslova */
+    font-weight: bold; /* Podebljan tekst, kao na slici */
+}
+
+/* Opis usluge */
+.service-item p {
+    font-size: 0.9em; /* Veličina fonta */
+    color: #555; /* Srednje tamna boja teksta */
+    line-height: 1.6; /* Visina linije */
+}
+
+
+/* ZGRADA RAČANSKA DOBRA VERZIJA */
+
+.section-4{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2b2b2b; 
+    max-height: 500PX; 
+
+    background-image: linear-gradient(
+        to bottom,
+    /* Prva boja */
+    #fff2cc 0,
+    #fff2cc 40px,
+    
+    /* Druga boja */
+    #ffc000 40px,
+    #ffc000 80px,
+    
+    /* Treća boja */
+    #2b2b2b  80px,
+    #2b2b2b  360px,
+
+    #fff 360px,
+    #fff 100%
+    )
+}
+
+.section-4 .sadrzaj-lijevo{
+    padding-left: 370px;
+    margin-top: -40px;
+}
+
+
+.section-4 .sadrzaj-lijevo h2{
+    font-size: 48px;
+  font-weight: 800; /* extra bold */
+  text-transform: uppercase;
+  color: white;
+  line-height: 1.1; 
+  padding-left: 15px;
+  letter-spacing: 0.7px;
+  margin-bottom: -15px;
+}
+
+.sadrzaj-lijevo2{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.arrows {
+  display: flex;
+  font-size: 130px; /* smanji ako ti je 160px previše */
+  color: #ffc000;
+  line-height: 1;
+  letter-spacing: -15px; /* smanji razmak između karaktera */
+}
+
+.arrows span {
+  font-weight: 100;   /* tanje strelice, ako font to podržava */
+  padding: 0;
+  margin: 0;
+}
+
+.section-4 .sadrzaj-desno {
+    max-width: 510px;
+}
+
+.section-4 .sadrzaj-desno img{
+    max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*zgrada racanska za telefon*/
+.section-no-desk-579{
+    display: none;
+}
+
+.section-no-desk-579 img {
+    /* Postavlja maksimalnu širinu slike na 100% od roditeljskog elementa. */
+    /* To znači da slika nikad neće biti šira od svog kontejnera. */
+    max-width: 100%;
+}
+
+
+/*ZGRADA RAČANSKA loša verzija*/
+
+/*
+.section-4{
+    position: relative;
+}
+
+.section-4 .pozadina-svijetla{
+     background-color: #fff2cc; 
+     min-height: 40px;
+}
+
+.section-4 .pozadina-tamna{
+     background-color: #ffc000; 
+     min-height: 40px;
+}
+
+.section-4 .pozadina-glavna{
+    background-color: #2b2b2b;  
+    
+}
+
+.section-4 .sadrzaj {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 300px;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+
+
+.section-4 .sadrzaj-desno2{
+    display: flex;
+    align-items: center; 
+    gap: 50px;
+}
+
+.sadrzaj-desno h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 800; 
+  text-transform: uppercase;
+  color: white;
+  line-height: 1.1; 
+  padding-left: 15px;
+  letter-spacing: 0.7px;    
+  margin-bottom: -15px;
+}
+
+
+.section-4 .sadrzaj-lijevo {
+    position: absolute;
+    top: -195px;
+    right: 0;
+}
+.section-4 .sadrzaj-lijevo img{
+    max-height: 800px;
+    max-width: 1300px;
+}
+
+.section-4 .pozadina-bijela{
+    background-color: #fff;
+    min-height: 150px;
+}
+
+
+.arrows {
+  display: flex;
+  font-size: 130px;  
+  color: #ffc000;
+  line-height: 1;
+  letter-spacing: -15px; 
+}
+
+.arrows span {
+  font-weight: 100;   
+  padding: 0;
+  margin: 0;
+}
+*/
+/*************/
+
+
+
+/*******SEKCIJA TI INVESTIRAŠ, MI GRADIMO*****/
+.no-padding{
+    margin-top: -50px;
+}
+
+.section-title span{
+    color:#f0b90b;
+}
+
+/* Specifični stilovi SAMO za sekciju sa bagerom */
+.services-bager {
+    min-height: 800px;
+    background-image: url('img/Bager.png'); /* Pozadinska slika */
+    background-size: cover; /* Prilagodi sliku veličini kontejnera */
+    background-position: center right; /* Pozicioniraj sliku desno */
+    background-repeat: no-repeat;
+    position: relative;
+    /* Ostatak .services-container stila, ako postoji, zadržite ovdje */
+}
+
+/* Ograničite širinu teksta samo u ovoj sekciji */
+.services-bager .section-header {
+    width: 50%; /* Tekst će zauzeti 50% širine kontejnera */
+    margin-left: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.services-bager .section-header .section-title{
+    margin-bottom: 35px;
+}
+
+.services-bager .section-header p{
+    margin-bottom: 15px;
+}
+
+.services-bager .section-header .btnr{
+    margin-top: 30px;
+}
+
+.section-no-desk{
+    display: none;
+}
+
+
+/***** SECTION 2-2  O NAMA*****/
+
+.section2-2 {
+    background-color: white;
+    padding-left: 235px;
+    padding-right: 235px;
+    text-align: center;  
+    padding-bottom: 20px;
+}
+
+.section2-2 .naslov {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+ 
+.section2-2 .naslov h2 {
+    color: var(--naslov-color);
+    padding-bottom: 20px;
+    font-size: 2.6em; /* Veći font za naslov */
+    color: #333; /* Tamnija boja teksta */
+    margin-top: 0; /* Ukloni gornju marginu */
+    margin-bottom: 0; /* Ukloni donju marginu */
+    text-transform: uppercase; /* Velika slova */
+    font-weight: 800; /* Ekstra boldiran font, kao na slici */
+    letter-spacing: 0.7px;
+    line-height: 1.1;
+}
+
+.section2-2 .naslov h2::before {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 7px;
+    background-color: #f0b90b;
+    margin: 15px auto 0;
+    margin-bottom: 15px;
+}
+
+.section2-2 .naslov p {
+   /* font-size: 20px;*/
+    padding-bottom: 10px;
+}
+
+.br-razmak {
+    display: inline;
+}
+
+.section2-2-2{
+    text-align: center;
+    padding-bottom: 70px;  
+}
+
+.section2-2-2 video{
+    max-width: 100%; /* Prilagodi veličinu videa ako je potrebno */
+    height: auto; 
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.3); 
+    border-radius: 10px; 
+    border: 6px solid #f0b90b ; overflow: hidden; max-width: 100%;
+}
+
+
+
+/******FOOTER **********/
+
+.footer {
+    font-size: 14px;
+    background-color: #1f1f24;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .footer .container{
+    text-align: center;
+  }
+  
+  .footer .icon {
+    /*margin-right: 15px;*/
+    font-size: 24px;
+    line-height: 0;
+  }
+  
+  .footer h4 {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    color: #fff;
+  }
+
+  .row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 60px 50px;
+  }
+
+  .custom-col a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  
+  .footer .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: 10px;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+
+  .footer .social-links a:last-child {
+    margin-right: 0px;
+  }
+  
+  .footer .social-links a:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+  
+  .footer .copyright {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .footer .credits {
+    padding-top: 4px;
+    text-align: center;
+    font-size: 13px;
+    padding-bottom: 25px;
+  }
+  
+  .footer .credits a {
+    color: #fff;
+  }
+
+  /* STRANICA POLITIKA PRIVATNOSTI */
+
+  .politika {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*height: 100vh; /* Ovo postavlja visinu sekcije na 100% visine ekrana */
+    margin-top: 10PX;
+}
+
+.container_politika {
+    max-width: 800px; /* Prilagodite širinu containera prema vašim potrebama */
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.container_politika h2{
+    margin-bottom: 10px;
+}
+
+.container_politika p{
+    margin-bottom: 20px;
+}
+
+.container_politika p.margin-b{
+    margin-bottom: 35px;
+}
+
+.politika .naslov_sekcija3 h1{
+    text-align: center;
+    left: 0;
+}
+
+
+
+.politika  a{
+    background-color: #ee1e1e;
+    color: white; 
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    display: inline-block; 
+    margin-top: 35px;
+}
+
+.section2 .sadrzaj_desno .crveni_kontakt:hover {
+    background-color: #c00; 
+}
+
+
+.home-content,
+.hero-content-wrapper {
+    transition: opacity 0.3s ease-in-out; /* Dodajemo tranziciju za glatki efekat */
+    z-index: 1; /* Neka bude ispod menija */
+}
+
+.home-content.fade-out,
+.hero-content-wrapper.fade-out {
+    opacity: 0;
+    pointer-events: none; /* Sprečava klikove na skriveni sadržaj */
+}
+
+
+/*RESPONSIVE*/
+@media (max-width: 1450px) {
+
+.section-4 .sadrzaj-lijevo{
+    padding-left: 200px;
+
+}
+}
+
+@media (max-width: 1250px) {
+.section-4 .sadrzaj-lijevo{
+    padding-left: 150px;
+
+}
+}
+
+@media (max-width: 1090px) {
+.section-4 .sadrzaj-lijevo{
+    padding-left: 100px;
+}
+}
+
+@media (max-width: 1045px) {
+.section-4 .sadrzaj-lijevo{
+    padding-left: 80px;
+}
+}
+
+@media (max-width: 1020px) {
+.section-4 .sadrzaj-lijevo{
+    padding-left: 80px;
+}
+}
+
+@media (max-width: 992px) {
+.section-4 .sadrzaj-lijevo{
+    padding-left: 40px;
+}
+}
+
+
+
+@media (max-width: 991px) {
+
+    /*HEADER MENI*/
+
+    .no_desk {
+        display: block;
+    }
+
+    .checkbox {
+        position: absolute;
+        display: block;
+        height: 33px;
+        width: 34px;
+        top: 30px;
+        right: 40px;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+
+    .menu {
+        position: fixed;
+        top: 0px;
+        left: -100%;
+        display: block;
+        padding: 100px 50px;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        transition: 0.5s;
+        z-index: 3;
+    }
+
+    .menu.active {
+        left: 0;
+    }
+
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+    
+    }
+
+    .toggle {
+        position: absolute;
+        /*top: 15%;*/
+        right: 5%;
+        width: 70px;
+        height: 70px;
+        background: url(menu.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 35px;
+        cursor: none;
+    }
+
+    .toggle.active {
+        background: url(close.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 25px;
+        cursor: pointer;
+        z-index: 1000;
+        filter: invert(1);
+    }
+
+    .toggle:not(.active) {
+        background-color: transparent;
+    }
+
+
+    header ul li a {
+        font-size: 24px;
+        margin: 10px;
+    }
+
+    header ul li a {
+        color: #0006;
+    }
+
+    header ul li:hover a {
+        color: #000;
+    }
+
+    header ul li a:hover::before {
+        width: 0%; 
+    }
+
+    header ul li:first-child a.z_linija {
+    border-bottom: none;
+    }
+
+    header ul li:first-child {
+        padding-left: 10px;
+    }
+
+    header ul li a:hover,
+    .z_linija {
+        border-bottom: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    a .logo {
+        width: 130px;
+
+    }
+
+    a img .logo {
+        z-index: 10;
+    }
+
+
+    header .contact {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.1);
+        -webkit-text-fill-color: #f0b90b; /* Boja teksta za Safari (iPhone) */
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+    }
+
+       header .contact {
+        display: none   ;
+    }
+
+    /** SEKCIJA 1 VJERUJEMO **/
+
+   .home-content{
+    padding-left: 20PX;
+   }
+
+   .home-content h1 {
+    font-size: 4.5em;
+    }
+
+    .home-content p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    }
+
+
+
+    /* SECTION 2 - SERVICE */
+
+    .services-section .section-header {
+    margin-bottom: 0px; 
+    margin-left: 0px
+    }
+
+    /*.services-section .section-title {
+    font-size: 2.1em;
+    }*/
+
+    .services-section .section-underline {
+    width: 70px;
+    height: 6.5px;
+    
+    }
+
+    /** SEKCIJA ZGRADA RACANSKA **/
+
+    .sadrzaj-lijevo2 {
+        gap: 25px;
+    }
+
+   .section-4 .sadrzaj-lijevo h2 {
+        font-size: 2.1em;
+    }
+
+    .sadrzaj-lijevo2    .btnr {
+    padding: 20px 0;
+    margin-left: -10px;
+    font-size: 1em;
+    letter-spacing: 0.8px;
+    width: 270px;
+    }
+
+
+    /***SEKCIJA TI INVESTIRAŠ MI GRADIMO***/
+
+  
+    .services-bager .section-header {
+    width: 40%;
+    }
+
+    .services-bager .section-header p {
+    font-size: 1em;
+    }
+
+    .services-bager{
+        background: white;
+        margin-top: 90px;
+    }
+    .services-bager .section-header {
+    width: 100%;
+    }
+
+    .section-no-desk{
+        display: block;
+    }
+
+    .section-no-desk img{
+        max-width: 700px;
+        max-height: 700px;
+    }
+
+
+
+    /****SEKCIJA O NAMA****/
+    .section2-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    }   
+
+    .section2-2-2 {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 5%;
+    }
+
+    .section2-2 .naslov h2 {
+        font-size: 2.1em;
+    }
+
+    .section2-2 .naslov h2::before {
+    width: 70px;
+    height: 6.5px;
+    }
+
+
+    /*FOOTER*/
+    footer{
+        /*margin-top: -45px;*/
+        padding-top: 10px;
+    }
+
+    .footer .icon {
+        margin-right: 15px;
+    }
+
+    .row{
+        flex-direction: column;
+        padding: 20px 0px;
+      }
+
+      .custom-col:last-child{
+        margin-top: 30px;
+      }
+}
+
+@media (max-width: 911px) {
+    
+.section-4{ 
+    max-height: 388PX; 
+    background-image: linear-gradient(
+        to bottom,
+    /* Prva boja */
+    #fff2cc 0,
+    #fff2cc 30px,
+    
+    /* Druga boja */
+    #ffc000 30px,
+    #ffc000 60px,
+    
+    /* Treća boja */
+    #2b2b2b  60px,
+    #2b2b2b  300px,
+
+    #fff 300px,
+    #fff 100%
+    )
+}
+
+
+    .section-4 .sadrzaj-desno{
+        max-width: 395px;
+    }
+}
+
+@media (max-width: 892px) {
+
+.section-4 .sadrzaj-lijevo{
+    padding-left: 15px;
+    padding-top: 25px;
+}
+.sadrzaj-lijevo2 {
+        gap: 20px;
+        margin-top: -20px;
+}
+.arrows {
+    font-size: 120px;
+}
+}
+
+
+@media (max-width: 741px) {
+    
+
+    .section-4{ 
+    max-height: 270PX; 
+    background-image: linear-gradient(
+        to bottom,
+    /* Prva boja */
+    #fff2cc 0,
+    #fff2cc 20px,
+    
+    /* Druga boja */
+    #ffc000 20px,
+    #ffc000 40px,
+    
+    /* Treća boja */
+    #2b2b2b  40px,
+    #2b2b2b  210px,
+
+    #fff 210px,
+    #fff 100%
+    )
+    }
+
+    .section-4 .sadrzaj-lijevo h2 {
+        font-size: 1.8em;
+    }
+
+    .sadrzaj-lijevo2    .btnr {
+    padding: 20px 0;
+    margin-left: -10px;
+    font-size: 1em;
+    letter-spacing: 0.8px;
+    width: 220px;
+    }
+
+    .sadrzaj-lijevo2 {
+        gap: 15px;
+    }
+
+
+    .section-4 .sadrzaj-lijevo {
+        padding-left: 35px;
+        padding-top: 45px;
+    }
+
+    .section-4 .sadrzaj-desno{
+        max-width: 275px;
+    }
+}
+
+@media (max-width: 579px) {
+
+    .main-hero-area {
+        display: block;
+    }
+
+  .home-content{
+    padding-left: 20px;
+   }
+
+   .home-content h1 {
+    font-size: 3.9em;
+    line-height: 0.9;
+    }
+
+    .home-content p {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    }
+
+    .btnr {
+    padding: 20px 0;
+    margin-left: -10px;
+    font-size: 1em;
+    letter-spacing: 0.8px;
+    width: 270px;
+    }
+
+
+    .main-hero-area {
+    background-image: url(img/Hero-picture.jpg);
+    min-height: 680px;
+    }
+
+    .home-content {
+        margin-top: 50px;
+    }
+
+    .services-section {
+    padding-bottom: 0px;
+    }
+
+    .services-bager {
+        margin-top: 0px;
+    }
+
+    .section-4 .sadrzaj-lijevo h2 {
+        font-size: 1.5em;
+    }
+
+    .sadrzaj-lijevo2    .btnr {
+    padding: 15px 0;
+    margin-left: -10px;
+    font-size: 1em;
+    letter-spacing: 0.8px;
+    width: 180px;
+    }
+
+    .sadrzaj-lijevo2 {
+        gap: 10px;
+    }
+
+    .arrows {
+        margin-top: -10px;
+        font-size: 110px;
+    }
+
+    .section-4 .sadrzaj-lijevo {
+        padding-left: 15px;
+        padding-top: 45px;
+    }
+
+    .section-4 .sadrzaj-desno {
+        /*max-width: 205px;*/
+    }
+
+     .no-mob{
+        display: none;
+    }
+
+    .section-no-desk-579{
+        display: block;
+    }
+}
+
+
+@media (max-width: 481px) {
+
+
+
+    .service-items {
+    gap: 0px;
+    }
+
+    .section-no-desk img {
+        max-width: 500px;
+        max-height: 500px;
+    }
+
+ .services-bager .section-header .section-title {
+        margin-bottom: 25px;
+    }
+        .services-bager .section-header p {
+        font-size: 0.9em;
+    }
+
+    .services-bager .section-header .btnr {
+        margin-bottom: 20px;
+    }
+
+    .section2-2 .naslov h2 {
+        padding-bottom: 15px;
+    }
+
+    .section2-2 .naslov p {
+        font-size: 0.9em;
+    }
+
+    /*SECTION 4 ZGRADA RACANSKA*/
+
+    .section-4 .pozadina-svijetla {
+    min-height: 20px;
+    }
+    .section-4 .pozadina-tamna {
+    min-height: 20px;
+    }
+
+    .section-4 .sadrzaj {
+    min-height: 90px;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    }
+
+    .sadrzaj-desno h2 {
+    font-size: 26px;
+    padding-top: 10px;
+    }  
+
+    .section-4 .sadrzaj-lijevo {
+     top: -19.5vw;
+    }
+
+    .section-4 .sadrzaj-lijevo img {
+    max-height: 500px;
+    max-width: 250px;
+    }
+
+    .section-4 .pozadina-bijela {
+        min-height: 0px;
+    }
+
+}
+
+@media (max-width: 379px) {
+    .home-content p {
+    font-size: 0.85em;
+    }   
+}
